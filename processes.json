@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name"             : "redribbot",
+    "script"           : "node_modules/.bin/hubot",
+    "exec_interpreter" : "coffee",
+    "args"             : "--adapter slack",
+    "watch"            : "./",
+    "ignoreWatch"      : ["node_modules"],
+    "env": {
+      "HUBOT_SLACK_TOKEN" : "xoxb-3396723305-jCe06ZEQ50GaUb5uzgaAS1yo"
+    }
+  }]
+}

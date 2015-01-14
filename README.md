@@ -17,10 +17,26 @@
             \//      |xx|
 ```
 
-## test on local
+## Run
 
-create `~/.hubotrc` file and add following
+make sure you have `pm2`, `coffee-script`
 
 ```
-export HUBOT_SLACK_TOKEN="..."
+npm install -g pm2 coffee-script
 ```
+
+modify `HUBOT_SLACK_TOKEN` key in `processes.json`.
+
+```
+"env" : {
+  "HUBOT_SLACK_TOKEN" : "..."
+}
+```
+
+fire up!!
+
+```
+./bin/hubot
+```
+
+now, you can manage hubot process with `pm2`
