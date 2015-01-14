@@ -16,7 +16,8 @@
     "hubot-scripts": "^2.5.16",
     "hubot-shipit": "^0.1.1",
     "hubot-slack": "^3.2.1",
-    "hubot-youtube": "^0.1.2"
+    "hubot-youtube": "^0.1.2",
+    "hubot-wolfram": "^1.0.7"
   },
   "engines": {
     "node": "0.10.x"
