@@ -1,0 +1,20 @@
+{
+  "apps": [{
+    "name"             : "redribbot",
+    "script"           : "bin/hubot",
+    "exec_interpreter" : "sh",
+    "args"             : "--adapter slack",
+    "watch"            : ["package.json", "external-scripts.json", "scripts/", "hubot-scripts.json"],
+    "env": {
+      "HUBOT_SLACK_TOKEN" : ""
+    }
+  }, {
+    "name"             : "webhook_server",
+    "script"           : "webhook/server.coffee",
+    "exec_interpreter" : "coffee",
+    "watch"            : ["webhook/server.coffee"],
+    "env": {
+      "WEBHOOK_SECRET" : ""
+    }
+  }]
+}

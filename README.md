@@ -17,12 +17,29 @@
             \//      |xx|
 ```
 
-## test on local
+## Run
 
-create `~/.hubotrc` file and add following
+make sure you have `pm2`, `coffee-script`
 
 ```
-export HUBOT_HIPCHAT_JID="..."
-export HUBOT_HIPCHAT_PASSWORD="..."
-export HUBOT_HIPCHAT_ROOMS="..."
+npm install -g pm2 coffee-script
 ```
+
+update `HUBOT_SLACK_TOKEN` and `WEBHOOK_SECRET` in `processes.json`.
+
+```
+"env" : {
+  "HUBOT_SLACK_TOKEN" : "..."
+}
+"env" : {
+  "WEBHOOK_SECRET" : "..."
+}
+```
+
+fire up!!
+
+```
+pm2 start processes.json
+```
+
+now, you can manage hubot process with `pm2`
