@@ -4,7 +4,7 @@
     "script"           : "bin/hubot",
     "exec_interpreter" : "sh",
     "args"             : "--adapter slack",
-    "watch"            : ["package.json", "external-scripts.json", "scripts/", "hubot-scripts.json"]
+    "watch"            : ["package.json", "external-scripts.json", "scripts/", "hubot-scripts.json", "bin/hubot"]
   }, {
     "name"             : "webhook_server",
     "script"           : "webhook/server.coffee",
