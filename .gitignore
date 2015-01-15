@@ -31,3 +31,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Prevent project and workspace filess of Sublime Text
+*.sublime-*
