@@ -10,8 +10,9 @@
 keywords = ["슴가","움짤","가슴","섹시","헉","레전드","육덕"]
 
 module.exports = (robot) ->
+  name_regex = new RegExp("#{robot.name}:?\\s?(효성|아이유|IU|크리스탈|수지)", "i")
 
-  robot.hear /(효성|아이유|IU|크리스탈|수지)/i, (msg) ->
+  robot.hear name_regex, (msg) ->
     idol    = msg.match[1]
     keyword = msg.random keywords
     query   = "#{idol} #{keyword}"
