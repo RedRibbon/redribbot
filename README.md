@@ -25,15 +25,11 @@ make sure you have `pm2`, `coffee-script`
 npm install -g pm2 coffee-script
 ```
 
-update `HUBOT_SLACK_TOKEN` and `WEBHOOK_SECRET` in `processes.json`.
+create `.hubotrc` file on your `$HOME` and add following.
 
 ```
-"env" : {
-  "HUBOT_SLACK_TOKEN" : "..."
-}
-"env" : {
-  "WEBHOOK_SECRET" : "..."
-}
+export HUBOT_SLACK_TOKEN="..."
+export WEBHOOK_SECRET="..."
 ```
 
 fire up!!
@@ -43,3 +39,11 @@ pm2 start processes.json
 ```
 
 now, you can manage hubot process with `pm2`
+
+## Test it local
+
+just type following command
+
+```
+./bin/hubot
+```
