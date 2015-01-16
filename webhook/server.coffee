@@ -74,9 +74,10 @@ merge = (obj) ->
       } unless _.contains members, user
     .then ()        -> autoComment()
     .then ()        -> confirmMerge()
+    .then ()        -> console.log 'OK Merged'
     .catch (error)  -> 
       return welcomeComment() if error.name is "NotRedribbonMemeberError"
       console.log error
-    .done ()        -> console.log 'OK Merged'
+    .done ()        -> console.log 'Finished'
 
 server.listen 9599, () -> console.log 'webhook server started'
