@@ -47,12 +47,12 @@ merge = (obj) ->
   auto = 
     user: 'redribbon'
     repo: 'redribbot'
-    body: "#{user}!! what a contribute :lipstick:"
+    body: "@#{user}!! what a contribute :lipstick:"
     number: number
   welcome = 
     user: 'redribbon'
     repo: 'redribbot'
-    body: "Hi, #{user}. Thanks to contribute redribbot. Someone will show up soon."
+    body: "Hi, @#{user}. Thanks to contribute redribbot. Someone will show up soon."
     number: number
   commit = 
     user: 'redribbon'
