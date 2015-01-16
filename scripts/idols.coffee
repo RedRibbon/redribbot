@@ -2,7 +2,7 @@
 #   Get random idol image.
 #
 # Commands:
-#   hubot (효성|아이유|IU|크리스탈|수지)
+#   hubot (효성|아이유|IU|크리스탈|수지|혜리)
 #
 # Author:
 #   chitacan
@@ -10,12 +10,13 @@
 keywords = ["슴가","움짤","가슴","섹시","헉","레전드","육덕"]
 
 module.exports = (robot) ->
-  name_regex = new RegExp("#{robot.name}:?\\s?(효성|아이유|IU|크리스탈|수지)", "i")
+  name_regex = new RegExp("#{robot.name}:?\\s?(효성|아이유|IU|크리스탈|수지|혜리)", "i")
 
   robot.hear name_regex, (msg) ->
     idol    = msg.match[1]
     keyword = msg.random keywords
     query   = "#{idol} #{keyword}"
+    msg.send "Self-query on #{query}..."
     imageMe msg, query, true, true, (url) -> msg.send url
 
 imageMe = (msg, query, animated, faces, cb) ->
