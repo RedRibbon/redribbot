@@ -19,7 +19,7 @@ server = http.createServer (req, res) ->
 handle = (obj) ->
   switch obj.action
     when 'closed' then update()
-    when 'open'   then merge(obj)
+    when 'opened' then merge(obj)
 
 update = () ->
   opt = { cwd : process.cwd() }
