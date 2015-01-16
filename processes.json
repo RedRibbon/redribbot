@@ -7,8 +7,8 @@
     "watch"            : ["package.json", "external-scripts.json", "scripts/", "hubot-scripts.json", "bin/hubot"]
   }, {
     "name"             : "webhook_server",
-    "script"           : "webhook/server.coffee",
-    "exec_interpreter" : "coffee",
-    "watch"            : ["webhook/server.coffee"]
+    "script"           : "webhook/server",
+    "exec_interpreter" : "sh",
+    "watch"            : ["webhook/server.coffee", "webhook/server"]
   }]
 }
