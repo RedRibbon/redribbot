@@ -66,7 +66,8 @@ merge = (obj) ->
   confirmMerge   = Q.nbind api.pullRequests.merge   ,api, commit
 
   getMembers()
-    .then (members) -> _.pluck members, 'login'
+    .then (members) ->
+      _.pluck members, 'login'
     .then (members) ->
       throw {
         name    : "NotRedribbonMemeberError"
