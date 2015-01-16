@@ -27,7 +27,7 @@ update = () ->
   child.stderr.on 'data', (data) ->
     console.error data?.toString()
 
-getSignature = (body, secret) ->
+getSignature = (body = '', secret = '') ->
   sha = crypto.createHmac('sha1', secret).update(body).digest('hex')
   "sha1=#{sha}"
 
