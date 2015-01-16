@@ -19,7 +19,7 @@ server = http.createServer (req, res) ->
 handle = (obj) ->
   switch obj.action
     when 'closed' then update()
-    when 'open'   then merge(obj)
+    when 'opened' then merge(obj)
 
 update = () ->
   opt = { cwd : process.cwd() }
@@ -27,7 +27,7 @@ update = () ->
   child.stderr.on 'data', (data) ->
     console.error data?.toString()
 
-getSignature = (body, secret) ->
+getSignature = (body = '', secret = '') ->
   sha = crypto.createHmac('sha1', secret).update(body).digest('hex')
   "sha1=#{sha}"
 
