@@ -8,9 +8,10 @@
 #   chitacan
 
 keywords = ["슴가","움짤","가슴","섹시","헉","레전드","육덕"]
+idols    = ["효성","아이유","크리스탈","수지","혜리","현아","태연","윤아"].join '|'
 
 module.exports = (robot) ->
-  name_regex = new RegExp("#{robot.name}:?\\s?(효성|아이유|IU|크리스탈|수지|혜리)", "i")
+  name_regex = new RegExp("#{robot.name}:?\\s?(#{idols})", "i")
 
   robot.hear name_regex, (msg) ->
     idol    = msg.match[1]
