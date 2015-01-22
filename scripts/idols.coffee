@@ -2,7 +2,7 @@
 #   Get random idol image.
 #
 # Commands:
-#   hubot (효성|아이유|IU|크리스탈|수지|혜리)
+#   hubot (효성|아이유|IU|크리스탈|수지|혜리|현아|태연|윤아) (keyword)
 #
 # Author:
 #   chitacan
