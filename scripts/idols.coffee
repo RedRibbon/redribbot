@@ -17,7 +17,7 @@ module.exports = (robot) ->
     idol    = msg.match[1]
     keyword = msg.match[2] ? msg.random keywords
     query   = "#{idol} #{keyword}"
-    msg.send "Self-query on #{query}..."
+    msg.send ":mag: #{query}... I have found the thing."
     imageMe msg, query, true, true, (url) -> msg.send url
 
 imageMe = (msg, query, animated, faces, cb) ->
