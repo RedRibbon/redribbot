@@ -11,8 +11,14 @@
 #   chitacan
 
 R = 
-  keyword  : ['씨발','좆같','젖같','개새']
-  response : ['이색기가?', '씨발 싸우자!!', '짐 뭐라고 햇냐?', '입으로 똥싸지 마라..']
+  keyword  : ['씨발','시발','좆같','젖같','개새','새끼','새퀴','호로','썅']
+  response : [
+    '이색기가?',
+    '씨발 싸우자!!',
+    '짐 뭐라고 햇냐?',
+    '입으로 똥싸지 마라..',
+    '좃밥새퀴 ㅋ'
+  ]
   image    : [
     'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRfH3n7uYzulAbjsxdvdbjal-QXsOscutiCzNsLDacJXZmujUgR',
     'https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAcQjRw&url=http%3A%2F%2Fsunghoon27.tistory.com%2F30&ei=hSzLVOzyMcG_mAWQs4DIBw&bvm=bv.84607526,d.dGY&psig=AFQjCNHqa-bXB4xnEv8lxlZ-BOfYKmLnQQ&ust=1422687659045813',
