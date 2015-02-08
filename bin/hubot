@@ -4,6 +4,6 @@ set -e
 
 npm install
 . $HOME/.hubotrc
-export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
+export PATH="node_modules/.bin:$PATH:node_modules/hubot/node_modules/.bin"
 
 exec node_modules/.bin/hubot "$@"
