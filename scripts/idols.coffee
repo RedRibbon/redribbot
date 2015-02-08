@@ -22,7 +22,7 @@ class Idol
 
   getRegEx: () ->
     idols = _.values(@data.names).join '|'
-    new RegExp "(#{idols})\\s?(.*)?", "i"
+    new RegExp "#{@robot.name}:?\\s(#{idols})\\s?(.*)?", "i"
 
   remove: () ->
     _lstnrs = @robot.listeners
