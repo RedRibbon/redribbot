@@ -28,8 +28,11 @@ npm install -g pm2 coffee-script
 create `.hubotrc` file on your `$HOME` and add following.
 
 ```
-export HUBOT_SLACK_TOKEN="..."
-export WEBHOOK_SECRET="..."
+export HUBOT_SLACK_TOKEN="<SLACK_BOT_TOKEN>"
+export WEBHOOK_SECRET="<GITHUB_WEBHOOK_SECRET>"
+export HUBOT_WOLFRAM_APPID="<WOLFRAM_APPID>"
+export GITHUB_API_TOKEN="<GITHUB_API_TOKEN>"
+export FIREBASE_TOKEN="<FIREBASE_CUSTOM_TOKEN>"
 ```
 
 fire up!!
