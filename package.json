@@ -5,6 +5,7 @@
   "author": "redribbon",
   "description": "A hubot instance for redribbon.",
   "dependencies": {
+    "firebase": "^2.1.2",
     "github": "^0.2.3",
     "hubot": "^2.11.0",
     "hubot-diagnostics": "0.0.1",
