@@ -22,8 +22,6 @@ class Idol
 
   getRegEx: () ->
     idols = _.values(@data.names).join '|'
-    console.log idols
-    console.log _.values(@data.keywords)
     new RegExp "(#{idols})\\s?(.*)?", "i"
 
   remove: () ->
@@ -75,12 +73,11 @@ module.exports = (robot) ->
 
   fb.authWithCustomToken process.env['FIREBASE_TOKEN'], (err, res) ->
     if err
-      console.log err
+      console.error err
     else
       fb.once 'value', (res) -> idol.update 'all', res.val() if res.exists()
 
   fb.on 'child_changed', (data) ->
-    console.log data.key(), data.val()
     idol.update data.key(), data.val()
 
   robot.hear /idol$/i, (msg) -> idol.query msg
