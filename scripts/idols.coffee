@@ -24,10 +24,9 @@ class Idol
     idols = _.values(@data.names).join '|'
     new RegExp "#{@robot.name}:?\\s(#{idols})\\s?(.*)?", "i"
 
-  remove: () ->
+  removePreviousListener: () ->
     _lstnrs = @robot.listeners
-    if @regEx?
-      @robot.listeners = _.reject _lstnrs, (lstnr) -> lstnr.regex == @regEx
+    @robot.listeners = _.reject _lstnrs, (lstnr) => lstnr.callback == @query
 
   query: (msg) =>
     idol    = msg.match[1] ? msg.random _.values(@data.names)
@@ -37,7 +36,7 @@ class Idol
     imageMe msg, query, true, true, (url) -> msg.send url
 
   updateAll: (data) ->
-    @remove()
+    @removePreviousListener()
     @data = data
     @regex = @getRegEx()
     @robot.hear @regex, @query
@@ -46,7 +45,7 @@ class Idol
     @data.keywords = keywords
 
   updateNames: (names) ->
-    @remove()
+    @removePreviousListener()
     @data.names = names
     @regex = @getRegEx()
     @robot.hear @regex, @query
@@ -81,6 +80,8 @@ module.exports = (robot) ->
     idol.update data.key(), data.val()
 
   robot.hear /idol$/i, (msg) -> idol.query msg
+
+  robot.hear /idol listener$/i, (msg) -> msg.send "```#{robot.listeners}``"
 
   robot.hear /idol show/i, (msg) ->
     names = _.values(idol.data.names)   .join()
