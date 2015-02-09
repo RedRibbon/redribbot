@@ -26,8 +26,7 @@ class Idol
 
   removePreviousListener: () ->
     _lstnrs = @robot.listeners
-    if @regEx?
-      @robot.listeners = _.reject _lstnrs, (lstnr) -> lstnr.regex == @regEx
+    @robot.listeners = _.reject _lstnrs, (lstnr) => lstnr.callback == @query
 
   query: (msg) =>
     idol    = msg.match[1] ? msg.random _.values(@data.names)
