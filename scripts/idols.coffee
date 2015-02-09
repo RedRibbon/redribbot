@@ -81,6 +81,8 @@ module.exports = (robot) ->
 
   robot.hear /idol$/i, (msg) -> idol.query msg
 
+  robot.hear /idol listener$/i, (msg) -> msg.send "```#{robot.listeners}``"
+
   robot.hear /idol show/i, (msg) ->
     names = _.values(idol.data.names)   .join()
     keys  = _.values(idol.data.keywords).join()
