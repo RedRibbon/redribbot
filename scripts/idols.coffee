@@ -65,10 +65,10 @@ module.exports = (robot) ->
   keyRef  = fb.child 'keywords'
 
   add = (ref, val, msg) ->
-    ref.set val, (err) -> msg.send err if err
+    ref.set val, (err) -> msg.send if err then err else ":pushpin: adding #{val}"
 
-  del = (ref, msg) ->
-    ref.remove (err) -> msg.send err if err
+  del = (ref, val, msg) ->
+    ref.remove (err) -> msg.send if err then err else ":pushpin: deleting #{val}"
 
   fb.authWithCustomToken process.env['FIREBASE_TOKEN'], (err, res) ->
     if err
@@ -96,14 +96,14 @@ module.exports = (robot) ->
     name = msg.match[2]
     id   = sha name
     ref  = nameRef.child id
-    if cmd is 'add' then add ref, name, msg else del ref, msg
+    if cmd is 'add' then add ref, name, msg else del ref, name, msg
 
   robot.respond /idol (addkey|delkey) (.*)/i, (msg) ->
     cmd = msg.match[1]
     key = msg.match[2]
     id  = sha key
     ref = keyRef.child id
-    if cmd is 'addkey' then add ref, key, msg else del ref, msg
+    if cmd is 'addkey' then add ref, key, msg else del ref, key, msg
 
 sha = (data) ->
   s = C.createHash 'sha1'
