@@ -17,6 +17,7 @@
 FB = require 'firebase'
 _  = require 'underscore'
 C  = require 'crypto'
+B  = require 'redribbot-brain'
 
 class React
   constructor: (@robot) ->
@@ -60,7 +61,7 @@ class React
 
 module.exports = (robot) ->
 
-  fb   = new FB 'https://redribbot.firebaseio.com/scripts/react'
+  fb    = B.root.child 'scripts/react'
   react = new React robot
 
   keyRef = fb.child 'keywords'
@@ -72,15 +73,9 @@ module.exports = (robot) ->
   del = (ref, val, msg) ->
     ref.remove (err) -> msg.send if err then else ":pushpin: delete #{val}"
 
-  fb.onAuth (auth) ->
-    if auth
-      fb.once 'value', (res) -> react.update 'all', res.val() if res.exists()
-
-  # fb.authWithCustomToken process.env['FIREBASE_TOKEN'], (err, res) ->
-  #   if err
-  #     console.error err
-  #   else
-  #     fb.once 'value', (res) -> react.update 'all', res.val() if res.exists()
+  B.auth (auth) ->
+    return unless auth
+    fb.once 'value', (res) -> react.update 'all', res.val() if res.exists()
 
   fb.on 'child_changed', (data) ->
     react.update data.key(), data.val()

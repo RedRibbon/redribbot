@@ -16,6 +16,7 @@
 _  = require 'underscore'
 FB = require 'firebase'
 C  = require 'crypto'
+B  = require 'redribbot-brain'
 
 class Idol
   constructor: (@robot) ->
@@ -58,7 +59,7 @@ class Idol
 
 module.exports = (robot) ->
 
-  fb   = new FB 'https://redribbot.firebaseio.com/scripts/idols'
+  fb   = B.root.child 'scripts/idols'
   idol = new Idol robot
 
   nameRef = fb.child 'names'
@@ -70,11 +71,9 @@ module.exports = (robot) ->
   del = (ref, val, msg) ->
     ref.remove (err) -> msg.send if err then err else ":pushpin: deleting #{val}"
 
-  fb.authWithCustomToken process.env['FIREBASE_TOKEN'], (err, res) ->
-    if err
-      console.error err
-    else
-      fb.once 'value', (res) -> idol.update 'all', res.val() if res.exists()
+  B.auth (auth) ->
+    return unless auth
+    fb.once 'value', (res) -> idol.update 'all', res.val() if res.exists()
 
   fb.on 'child_changed', (data) ->
     idol.update data.key(), data.val()

@@ -21,6 +21,7 @@
     "hubot-wolfram": "^1.0.7",
     "hubot-youtube": "^0.1.2",
     "q": "^1.1.2",
+    "redribbot-brain": "0.0.1",
     "underscore": "^1.7.0",
     "wolfram": ""
   },
