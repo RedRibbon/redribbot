@@ -21,8 +21,8 @@ C  = require 'crypto'
 class React
   constructor: (@robot) ->
 
-  getRegEx: (obj) ->
-    keywords = _.values(obj).join '|'
+  getRegEx: () ->
+    keywords = _.values(@data.keywords).join '|'
     new RegExp keywords, "i"
 
   removePreviousListener: () ->
@@ -30,7 +30,7 @@ class React
     @robot.listeners = _.reject _lstnrs, (lstnr) => lstnr.callback == @react
 
   react: (msg) =>
-    keyword = msg.match[1]
+    keyword = msg.match[0]
     response = msg.random _.values(@data.responses)
     res = response.replace('{key}', keyword)
     query = "#{res} 짤"
