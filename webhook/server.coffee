@@ -59,10 +59,16 @@ merge = (obj) ->
     repo: 'redribbot'
     number: number
     commit_message: ':shipit:'
+  error =
+    user: 'redribbon'
+    repo: 'redribbot'
+    body: "Oops, your request cannot be merged. :alien:"
+    number: number
 
   getMembers     = Q.nbind api.orgs.getMembers      ,api, org
   autoComment    = Q.nbind api.issues.createComment ,api, auto
   welcomeComment = Q.nbind api.issues.createComment ,api, welcome
+  errorComment   = Q.nbind api.issues.createComment ,api, error
   confirmMerge   = Q.nbind api.pullRequests.merge   ,api, commit
 
   getMembers()
@@ -77,8 +83,9 @@ merge = (obj) ->
     .then ()        -> confirmMerge()
     .then ()        -> console.log 'OK Merged'
     .catch (error)  -> 
-      return welcomeComment() if error.name is "NotRedribbonMemeberError"
       console.log error
+      return errorComment()   if error.code is 405
+      return welcomeComment() if error.name is "NotRedribbonMemeberError"
     .done ()        -> console.log 'Finished'
 
 server.listen 9599, () -> console.log 'webhook server started'
