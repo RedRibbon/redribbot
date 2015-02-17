@@ -19,15 +19,15 @@
 
 ## Run
 
-make sure you have `pm2`, `coffee-script`
+make sure you have `pm2`
 
 ```
-npm install -g pm2 coffee-script
+npm install -g pm2
 ```
 
 create `.hubotrc` file on your `$HOME` and add following.
 
-```
+```shell
 export HUBOT_SLACK_TOKEN="<SLACK_BOT_TOKEN>"
 export WEBHOOK_SECRET="<GITHUB_WEBHOOK_SECRET>"
 export HUBOT_WOLFRAM_APPID="<WOLFRAM_APPID>"
