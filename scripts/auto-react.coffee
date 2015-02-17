@@ -23,7 +23,7 @@ class React
 
   getRegEx: (obj) ->
     keywords = _.values(obj).join '|'
-    new RegExp "(#{keywords})\\s?(.*)?", "i"
+    new RegExp keywords, "i"
 
   removePreviousListener: () ->
     _lstnrs = @robot.listeners
@@ -31,23 +31,23 @@ class React
 
   react: (msg) =>
     keyword = msg.match[1]
-    response = msg.match[1] ? msg.random _.values(@data.responses)
+    response = msg.random _.values(@data.responses)
     res = response.replace('{key}', keyword)
     query = "#{res} 짤"
     msg.reply "#{res}"
-    imageMe msg, query, true, true, (url) -> msg.send url
+    getImage msg, query, true, true, (url) -> msg.send url
 
   updateAll: (data) ->
     @removePreviousListener()
     @data = data
     @regex = @getRegEx()
-    @robot.respond @regex, @react
+    @robot.hear @regex, @react
 
   updateKeywords: (keywords) ->
     @removePreviousListener()
     @data.keywords = keywords
     @regex = @getRegEx()
-    @robot.respond @regex, @react
+    @robot.hear @regex, @react
 
   updateResponses: (responses) ->
     @data.responses = responses
@@ -110,7 +110,7 @@ sha = (data) ->
   s.update data
   s.digest('hex').slice 0, 10
 
-imageMe = (msg, query, animated, faces, cb) ->
+getImage = (msg, query, animated, faces, cb) ->
   cb = animated if typeof animated == 'function'
   cb = faces if typeof faces == 'function'
   q = v: '1.0', rsz: '8', q: query, safe: 'active'
