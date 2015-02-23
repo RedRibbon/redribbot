@@ -34,7 +34,7 @@ class React
     keyword = msg.match[0]
     response = msg.random _.values(@data.responses)
     res = response.replace('{key}', keyword)
-    query = "#{res} 짤"
+    query = "#{keyword} 짤방"
     msg.reply "#{res}"
     getImage msg, query, true, true, (url) -> msg.send url
 
