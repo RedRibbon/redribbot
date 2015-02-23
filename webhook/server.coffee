@@ -8,11 +8,20 @@ _         = require 'underscore'
 server = http.createServer (req, res) ->
   secret = process.env.WEBHOOK_SECRET
   body   = ''
-  req.on 'data', (c) -> body += c.toString()
-  req.on 'end' , () ->
-    obj = JSON.parse body
-    sig = req.headers['x-hub-signature']
-    handle(obj) if req.url is '/webhook' and obj.repository.name is 'redribbot' and sig is getSignature body, secret
+  cache = []
+  req.on 'data', (c) -> cache.push c
+  req.on 'end' , ()  ->
+    buf  = Buffer.concat cache
+    obj  = JSON.parse buf.toString()
+    sig  = req.headers['x-hub-signature']
+    repo = obj.repository.name
+    gsig = getSignature buf.toString('binary'), secret
+
+    if req.url is '/webhook' and repo is 'redribbot' and sig is gsig
+      handle(buf)
+    else
+      handleError(repo, sig, gsig)
+
     res.writeHead 200, {'Content-Type': 'text/plain'}
     res.end 'OK';
 
@@ -20,6 +29,12 @@ handle = (obj) ->
   switch obj.action
     when 'closed' then update()
     when 'opened' then merge(obj)
+
+handleError = (repo, sig, gsig) ->
+  console.error "#{new Date()} cannot handle github webhooks"
+  console.error "x-hub-signature : #{sig}"
+  console.error "genereated      : #{gsig}"
+  console.error "from repo       : #{repo}"
 
 update = () ->
   opt = { cwd : process.cwd() }
