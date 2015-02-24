@@ -2,12 +2,12 @@
 #   Get random idol image.
 #
 # Commands:
-#   hubot <name> (keyword)      - get idol image based on keywords.
-#   hubot idol                  - get random idol image.
-#   hubot idol show             - print saved names & keywords.
-#   hubot idol add <name>       - add name in firebase.
+#   hubot <name> (keyword) - get idol image based on keywords.
+#   hubot idol - get random idol image.
+#   hubot idol show - print saved names & keywords.
+#   hubot idol add <name> - add name in firebase.
 #   hubot idol addkey <keyword> - add keyword in firebase.
-#   hubot idol del <name>       - delete name in firebase.
+#   hubot idol del <name> - delete name in firebase.
 #   hubot idol delkey <keyword> - detele keyword in firebase.
 #
 # Author:
@@ -79,10 +79,6 @@ module.exports = (robot) ->
     idol.update data.key(), data.val()
 
   robot.respond /idol$/i, (msg) -> idol.query msg
-
-  robot.respond /idol listener$/i, (msg) ->
-    lstnr = _.pluck(robot.listeners, 'regex').join '\n'
-    msg.send "```#{lstnr}```"
 
   robot.respond /idol show/i, (msg) ->
     names = _.values(idol.data.names)   .join()
