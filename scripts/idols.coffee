@@ -80,10 +80,6 @@ module.exports = (robot) ->
 
   robot.respond /idol$/i, (msg) -> idol.query msg
 
-  robot.respond /idol listener$/i, (msg) ->
-    lstnr = _.pluck(robot.listeners, 'regex').join '\n'
-    msg.send "```#{lstnr}```"
-
   robot.respond /idol show/i, (msg) ->
     names = _.values(idol.data.names)   .join()
     keys  = _.values(idol.data.keywords).join()
