@@ -7,7 +7,6 @@ _         = require 'underscore'
 
 server = http.createServer (req, res) ->
   secret = process.env.WEBHOOK_SECRET
-  body   = ''
   cache = []
   req.on 'data', (c) -> cache.push c
   req.on 'end' , ()  ->

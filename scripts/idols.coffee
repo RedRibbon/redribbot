@@ -2,12 +2,12 @@
 #   Get random idol image.
 #
 # Commands:
-#   hubot <name> (keyword)      - get idol image based on keywords.
-#   hubot idol                  - get random idol image.
-#   hubot idol show             - print saved names & keywords.
-#   hubot idol add <name>       - add name in firebase.
+#   hubot <name> (keyword) - get idol image based on keywords.
+#   hubot idol - get random idol image.
+#   hubot idol show - print saved names & keywords.
+#   hubot idol add <name> - add name in firebase.
 #   hubot idol addkey <keyword> - add keyword in firebase.
-#   hubot idol del <name>       - delete name in firebase.
+#   hubot idol del <name> - delete name in firebase.
 #   hubot idol delkey <keyword> - detele keyword in firebase.
 #
 # Author:
