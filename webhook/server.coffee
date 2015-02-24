@@ -17,7 +17,7 @@ server = http.createServer (req, res) ->
     gsig = getSignature buf.toString('binary'), secret
 
     if req.url is '/webhook' and repo is 'redribbot' and sig is gsig
-      handle(buf)
+      handle(obj)
     else
       handleError(repo, sig, gsig)
 
