@@ -37,7 +37,7 @@ class React
     keyword = msg.match[0]
     response = msg.random _.values(@data.responses)
     res = response.replace('{key}', keyword)
-    query = if @rnd 30 then "#{keyword} 짤방" else "#{res} 짤방"
+    query = if @rnd 80 then "#{keyword} 웃긴짤" else "#{res} 짤방"
     msg.reply "#{res}"
     if @rnd 50 then getImage msg, query, true, true, (url) -> msg.send url
 
