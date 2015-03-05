@@ -30,13 +30,16 @@ class React
     _lstnrs = @robot.listeners
     @robot.listeners = _.reject _lstnrs, (lstnr) => lstnr.callback == @react
 
+  rnd: (basic) -> 
+    Math.floor(Math.random() * 100) < basic
+
   react: (msg) =>
     keyword = msg.match[0]
     response = msg.random _.values(@data.responses)
     res = response.replace('{key}', keyword)
-    query = "#{keyword} 짤방"
+    query = if @rnd 30 then "#{keyword} 짤방" else "#{res} 짤방"
     msg.reply "#{res}"
-    getImage msg, query, true, true, (url) -> msg.send url
+    if @rnd 50 then getImage msg, query, true, true, (url) -> msg.send url
 
   updateAll: (data) ->
     @removePreviousListener()
